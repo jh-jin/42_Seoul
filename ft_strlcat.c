@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 20:11:07 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/04 22:25:16 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/06 14:08:38 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	di = 0;
 	si = 0;
 	while (dest[di])
-		++i;
-	while (src[si] && i < size - 1)
+		di++;
+	while (src[si] && di < size - 1)
 		dest[di++] = src[si++];
 	dest[di] = '\0';
 	return (len);
