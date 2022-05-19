@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 20:41:32 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/19 19:49:00 by jjin             ###   ########seoul.kr  */
+/*   Created: 2022/05/19 20:01:56 by jjin              #+#    #+#             */
+/*   Updated: 2022/05/19 22:34:39 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	ret;
+	char	*ret;
+	size_t	i;
 
-	ret = (char *)malloc(len + 1);
-	if (!s || !ret)
+	ret = (char *)malloc(ft_strlen(s) + 1);
+	if (!s || !f || !ret)
 		return (NULL);
-	if ((size_t)start >= ft_strlen(s) || !ft_strlcpy(ret, s + start, len + 1))
-		ret[0] = '\0';
+	i = 0;
+	while (s[i])
+		ret[i] = f(i, s[i++]);
+	ret[i] = '\0';
 	return (ret);
 }

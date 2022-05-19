@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 20:41:32 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/19 19:49:00 by jjin             ###   ########seoul.kr  */
+/*   Created: 2022/05/19 20:01:52 by jjin              #+#    #+#             */
+/*   Updated: 2022/05/19 22:43:45 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char	ret;
+	size_t	i;
 
-	ret = (char *)malloc(len + 1);
-	if (!s || !ret)
+	if (!s || !f)
 		return (NULL);
-	if ((size_t)start >= ft_strlen(s) || !ft_strlcpy(ret, s + start, len + 1))
-		ret[0] = '\0';
-	return (ret);
+	i = 0;
+	while (s[i])
+		f(i, s[i++]);
 }

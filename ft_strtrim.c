@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 20:41:32 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/19 19:49:00 by jjin             ###   ########seoul.kr  */
+/*   Created: 2022/05/19 18:02:32 by jjin              #+#    #+#             */
+/*   Updated: 2022/05/19 20:00:31 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	ret;
+	size_t	start;
+	size_t	end;
+	char	*ret;
 
-	ret = (char *)malloc(len + 1);
-	if (!s || !ret)
+	if (!s1 || !set)
 		return (NULL);
-	if ((size_t)start >= ft_strlen(s) || !ft_strlcpy(ret, s + start, len + 1))
-		ret[0] = '\0';
-	return (ret);
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (s1[end - 1] && ft_strchr(set, s1[end - 1]) && start < end)
+		end--;
+	return (ft_substr(s1, start, end - start + 1));
 }

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 20:41:32 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/19 19:49:00 by jjin             ###   ########seoul.kr  */
+/*   Created: 2022/05/19 17:44:51 by jjin              #+#    #+#             */
+/*   Updated: 2022/05/19 19:57:04 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	ret;
+	char	*s;
+	size_t	l1;
+	size_t	l2;
 
-	ret = (char *)malloc(len + 1);
-	if (!s || !ret)
+	if (!s1 || !s2)
 		return (NULL);
-	if ((size_t)start >= ft_strlen(s) || !ft_strlcpy(ret, s + start, len + 1))
-		ret[0] = '\0';
-	return (ret);
+	l1 = ft_strlen(s1);
+	l2 = ft_strlen(s2);
+	s = (char *)malloc(l1 + l2 + 1);
+	if (!s)
+		return (NULL);
+	(void)ft_strlcpy(s, s1, l1 + 1);
+	(void)ft_strlcpy(s + l1, s2, l2 + 1);
+	return (s);
 }
