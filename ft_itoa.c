@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:01:49 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/19 22:25:16 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/19 23:29:55 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ int	ft_check_sign(int n)
 	return (0);
 }
 
-int	ft_unsignedlen(int n)
+int	ft_intlen(int n)
 {
 	int	cnt;
 
 	cnt = 0;
 	if (n == 0)
 		return (1);
+	if (n < 0)
+		cnt += 1;
 	while (n)
 	{
 		n /= 10;
@@ -39,7 +41,7 @@ char	*ft_itoa(int n)
 	char	*ret;
 
 	sign = ft_check_sign(n);
-	len = (int)ft_unsignedlen(n) + sign;
+	len = (int)ft_intlen(n);
 	ret = (char *)malloc(len + 1);
 	if (!ret)
 		return (NULL);
