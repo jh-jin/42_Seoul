@@ -6,7 +6,13 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:03:19 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/19 22:46:56 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/19 23:33:14 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (!s || fd < 0)
+		return ;
+	write(fd, ft_itoa(n), ft_intlen(n));
+}
