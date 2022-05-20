@@ -6,10 +6,20 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:35:21 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/20 14:32:18 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 15:26:18 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstlast(t_list *lst);
+t_list	*ft_lstlast(t_list *lst)
+{
+	t_list	*ret;
+
+	while (*lst)
+	{
+		ret = lst;
+		lst = lst->next;
+	}
+	return (ret);
+}

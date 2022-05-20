@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:00:43 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/20 14:29:47 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 15:35:13 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	ret = (char **)malloc(sizeof(char *) * (ft_wordcnt((char *)s, c) + 1));
-	if (!s || !ret)
+	if (!ret)
 		return (NULL);
 	while (*s)
 	{
