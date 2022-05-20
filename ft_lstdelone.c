@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 23:35:54 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/20 15:42:32 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 19:36:20 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	del(lst->content);
+	if (!del)
+		return ;
+	if (lst)
+		del(lst->content);
 	free(lst);
 }

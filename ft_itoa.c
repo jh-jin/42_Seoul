@@ -6,59 +6,47 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:01:49 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/20 17:33:24 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 22:49:52 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_check_sign(int n)
+int	ft_int2char(char *tmp, int n)
 {
-	if (n < 0)
-		return (1);
-	return (0);
-}
+	int		i;
+	int		sign;
 
-int	ft_dec_len(int n)
-{
-	int	cnt;
-
-	cnt = 0;
 	if (n == 0)
-		return (1);
+		tmp[0] = 0;
+	sign = 1;
 	if (n < 0)
-		cnt += 1;
+		sign = -1;
+	i = 0;
 	while (n)
 	{
+		tmp[i++] = '0' + (n % 10) * sign;
 		n /= 10;
-		cnt++;
 	}
-	return (cnt);
+	if (sign == -1)
+		tmp[i] = '-';
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	int		sign;
-	int		len;
 	char	*ret;
+	int		i;
+	int		j;
+	char	tmp[100];
 
-	sign = ft_check_sign(n);
-	len = (int)ft_dec_len(n);
-	ret = (char *)malloc(len + 1);
+	j = 0;
+	i = ft_int2char(tmp, n);
+	ret = (char *)malloc(i + 2);
 	if (!ret)
-		return (NULL);
-	if (n == -2147483648)
-		return ((char *)"-2147483648");
-	if (sign)
-	{
-		ret[0] = '-';
-		n *= -1;
-	}
-	ret[len--] = '\0';
-	while (len--)
-	{
-		ret[len] = '0' + n % 10;
-		n /= 10;
-	}
+		return (0);
+	while (i >= 0)
+		ret[j++] = tmp[i--];
+	ret[j] = '\0';
 	return (ret);
 }

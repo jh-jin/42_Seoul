@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:03:19 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/20 17:33:29 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 21:55:03 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,15 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (fd < 0)
-		return ;
-	write(fd, ft_itoa(n), ft_dec_len(n));
+	unsigned int	num;
+
+	num = (unsigned int)n;
+	if (n < 0)
+	{
+		num = (unsigned int)-n;
+		ft_putchar_fd('-', fd);
+	}
+	if (num >= 10)
+		ft_putnbr_fd(num / 10, fd);
+	ft_putchar_fd('0' + num % 10, fd);
 }

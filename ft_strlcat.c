@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 20:11:07 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/06 14:08:38 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 20:18:09 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,13 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	di;
 	size_t	si;
-	size_t	len;
+	size_t	srclen;
+	size_t	destlen;
 
-	len = ft_strlen(src);
-	if (size == 0)
-		return (len);
-	else if (size < ft_strlen(dest))
-		len += size;
-	else
-		len += ft_strlen(dest);
+	srclen = ft_strlen(src);
+	destlen = ft_strlen(dest);
+	if (size <= destlen)
+		return (srclen + size);
 	di = 0;
 	si = 0;
 	while (dest[di])
@@ -32,5 +30,5 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	while (src[si] && di < size - 1)
 		dest[di++] = src[si++];
 	dest[di] = '\0';
-	return (len);
+	return (srclen + destlen);
 }
