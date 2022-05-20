@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 18:02:32 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/20 14:32:18 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 18:05:22 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;
 	size_t	end;
-	char	*ret;
 
 	if (!s1 || !set)
 		return (NULL);

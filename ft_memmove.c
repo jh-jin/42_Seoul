@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 18:42:48 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/04 18:38:38 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 19:02:16 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,17 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char		*pd;
 	const unsigned char	*ps;
 
-	if (ps < pd)
+	pd = dest;
+	ps = src;
+	if (ps > pd)
+		while (n--)
+			*pd++ = *ps++;
+	else
 	{
-		pd = dest + n;
-		ps = src + n;
+		pd += n;
+		ps += n;
 		while (n--)
 			*--pd = *--ps;
 	}
-	else
-	{
-		pd = dest;
-		ps = src;
-		while (n--)
-			*pd++ = *ps++;
-	}
+	return (dest);
 }

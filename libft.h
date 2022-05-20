@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 19:07:42 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/20 14:26:46 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 17:43:34 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+int			ft_dec_len(int n);
 
 int			ft_atoi(const char *s);
 void		ft_bzero(void *dest, size_t n);

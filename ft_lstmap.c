@@ -6,10 +6,11 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:16:45 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/20 17:02:51 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 17:03:26 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -21,7 +22,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	target = lst;
 	while (*target)
 	{
-		tmp = ft_lstnew(f(target->content))
+		tmp = ft_lstnew(f(target->content));
 		if (!tmp)
 		{
 			ft_lstclear(&news, del);

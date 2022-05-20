@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 20:41:32 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/20 14:32:18 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 17:46:43 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	ret;
+	char	*ret;
 
 	ret = (char *)malloc(len + 1);
 	if (!s || !ret)

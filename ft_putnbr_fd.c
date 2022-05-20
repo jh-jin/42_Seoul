@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:03:19 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/20 14:32:18 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 17:33:29 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (!s || fd < 0)
+	if (fd < 0)
 		return ;
-	write(fd, ft_itoa(n), ft_intlen(n));
+	write(fd, ft_itoa(n), ft_dec_len(n));
 }
