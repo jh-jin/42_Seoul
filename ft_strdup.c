@@ -6,9 +6,11 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:19:20 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/18 21:30:36 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 14:32:18 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strdup(const char *s)
 {

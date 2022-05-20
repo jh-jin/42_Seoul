@@ -6,9 +6,11 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:01:49 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/19 23:29:55 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 14:28:56 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_check_sign(int n)
 {

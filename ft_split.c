@@ -6,10 +6,11 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 20:00:43 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/19 21:14:01 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 14:29:47 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
 size_t	ft_wordcnt(char *s, char c)
 {

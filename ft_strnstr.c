@@ -6,11 +6,13 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 15:50:23 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/06 17:14:44 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 14:32:18 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strnstr(const char *big, const char *small, size_t n)
+#include "libft.h"
+
+char	*ft_strnstr(const char *big, const char *small, size_t n)
 {
 	size_t	len_small;
 

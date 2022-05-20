@@ -6,23 +6,25 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:29:02 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/18 21:29:26 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/20 14:32:18 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+#include "libft.h"
+
+int	ft_atoi(char *s)
 {
 	int			sign;
-	long long	answer;
+	long long	ret;
 
-	answer = 0;
+	ret = 0;
 	sign = 1;
-	while ((*str >= 7 && *str <= 13) || *str == 32)
-		str++;
-	if (*str == '-' || *str == '+')
-		if (*str++ == '-')
-			sign *= -1;
-	while (*str >= '0' && *str <= '9')
-		answer = answer * 10 + *str++ - '0';
-	return ((int)(sign * answer));
+	while ((*s >= 7 && *s <= 13) || *s == 32)
+		s++;
+	if (*s == '-' || *s == '+')
+		if (*s++ == '-')
+			flag *= -1;
+	while (*s >= '0' && *s <= '9')
+		ret = ret * 10 + *s++ - '0';
+	return ((int)(sign * ret));
 }
