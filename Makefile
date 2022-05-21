@@ -1,84 +1,51 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/31 19:07:45 by jjin              #+#    #+#              #
-#    Updated: 2022/05/20 17:45:39 by jjin             ###   ########seoul.kr   #
-#                                                                              #
-# **************************************************************************** #
+CC	= gcc
+CFLAGS	= -Wall -Wextra -Werror
 
-NAME				= libft.a
+AR	= ar
+ARFLAGS	= rcs
 
-SRCS				= ft_atoi.c \
-					  ft_bzero.c \
-					  ft_calloc.c \
-					  ft_isalnum.c \
-					  ft_isalpha.c \
-					  ft_isascii.c \
-					  ft_isdigit.c \
-					  ft_isprint.c \
-					  ft_itoa.c \
-					  ft_memchr.c \
-					  ft_memcmp.c \
-					  ft_memcpy.c \
-					  ft_memmove.c \
-					  ft_memset.c \
-					  ft_putchar_fd.c \
-					  ft_putendl_fd.c \
-					  ft_putnbr_fd.c \
-					  ft_putstr_fd.c \
-					  ft_split.c \
-					  ft_strchr.c \
-					  ft_strdup.c \
-					  ft_striteri.c \
-					  ft_strjoin.c \
-					  ft_strlcat.c \
-					  ft_strlcpy.c \
-					  ft_strlen.c \
-					  ft_strmapi.c \
-					  ft_strncmp.c \
-					  ft_strnstr.c \
-					  ft_strrchr.c \
-					  ft_strtrim.c \
-					  ft_substr.c \
-					  ft_tolower.c \
-					  ft_toupper.c
+RM	= rm -f
 
-BNS_SRCS			= ft_lstsize.c \
-					  ft_lstadd_back.c \
-					  ft_lstadd_front.c \
-					  ft_lstclear.c \
-					  ft_lstdelone.c \
-					  ft_lstiter.c \
-					  ft_lstlast.c \
-					  ft_lstmap.c \
-					  ft_lstnew.c
+NAME	= libft.a
 
-OBJS				= $(SRCS:%.c=%.o)
+HEADERS	= libft.h
 
-BNS_OBJS			= $(BNS_SRCS:%.c=%.o)
+SRCS	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c\
+		ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c\
+		ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c\
+		ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c\
+		ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c\
+		ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c\
+		ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c\
+		ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c\
+		ft_putendl_fd.c ft_putnbr_fd.c
 
-FLAGS				= -Wall -Wextra -Werror
+BONUS_SRCS	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
+			  ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c\
+			  ft_lstmap.c
 
-$(NAME)	:	$(OBJS)
-		gcc $(FLAGS) -c $(SRCS) -I./
-		ar rc $(NAME) $(OBJS)
+OBJS	= $(SRCS:.c=.o)
 
-all		:	$(NAME)
+BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
 
-bonus	:	$(NAME)
-		gcc $(FLAGS) -c $(BNS_SRCS) -I./
-		ar rc $(NAME) $(BNS_OBJS)
+all:	$(NAME)
 
-clean	:
-		rm -f $(OBJS) $(BNS_OBJS)
+$(NAME):	$(OBJS)
+	$(AR) $(ARFLAGS) $@ $^
 
-fclean	:	clean
-		rm -f $(NAME)
+bonus:
+	sleep 1
+	@make OBJS='$(SRCS:.c=.o) $(BONUS_OBJS)'
 
-re		:	fclean all
+clean:
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
-.PHONY	:	all clean fclean re
+fclean:	clean
+	$(RM) $(NAME)
+
+re:	fclean all
+
+%.o:%.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY:	all bonus clean fclean re

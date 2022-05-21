@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:16:45 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/20 19:41:22 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/21 13:56:50 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*tmp;
 	t_list	*news;
 
+	if (!lst || !f)
+		return (NULL);
+	news = NULL;
 	while (lst)
 	{
 		tmp = ft_lstnew(f(lst->content));

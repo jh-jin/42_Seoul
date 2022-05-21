@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 18:38:38 by jjin              #+#    #+#             */
-/*   Updated: 2022/05/20 22:38:15 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/05/21 14:48:27 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
-	if (!dest && !src)
+	if (dest == src)
 		return (dest);
 	i = -1;
 	while (++i < n)
