@@ -34,7 +34,6 @@ $(NAME):	$(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
 bonus:
-	sleep 1
 	@make OBJS='$(SRCS:.c=.o) $(BONUS_OBJS)'
 
 clean:
