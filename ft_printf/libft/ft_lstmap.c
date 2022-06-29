@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_dec.c                                     :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 16:51:55 by jjin              #+#    #+#             */
-/*   Updated: 2022/06/29 17:06:12 by jjin             ###   ########seoul.kr  */
+/*   Created: 2022/05/20 16:16:45 by jjin              #+#    #+#             */
+/*   Updated: 2022/05/21 13:56:50 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_print_dec(int d)
-{
-	int		len;
-	char	num;
+#include "libft.h"
 
-	num = ft_itoa(d);
-	free(num);
-	len = ft_print_str(num);
-	return (len);
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list	*tmp;
+	t_list	*news;
+
+	if (!lst || !f)
+		return (NULL);
+	news = NULL;
+	while (lst)
+	{
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
+		{
+			ft_lstclear(&news, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&news, tmp);
+		lst = lst->next;
+	}
+	return (news);
 }

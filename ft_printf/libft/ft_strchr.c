@@ -1,17 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 16:51:53 by jjin              #+#    #+#             */
-/*   Updated: 2022/06/29 17:05:30 by jjin             ###   ########seoul.kr  */
+/*   Created: 2022/05/06 14:25:21 by jjin              #+#    #+#             */
+/*   Updated: 2022/05/20 14:32:18 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_print_char(char c)
+#include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
 {
-	write(1, &c, 1);
-	return (1);
+	while (*s && *s != (char)c)
+		s++;
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }

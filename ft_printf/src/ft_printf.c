@@ -6,13 +6,11 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 15:41:24 by jjin              #+#    #+#             */
-/*   Updated: 2022/06/29 17:06:28 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/06/29 19:57:55 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-//cspdiuxX%
-//malloc, free, write,
-//va_start, va_arg, va_copy, va_end
+#include "ft_printf.h"
 
 int	ft_printformat(const char f, va_list vl)
 {
