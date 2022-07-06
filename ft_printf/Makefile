@@ -6,48 +6,48 @@
 #    By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/29 20:01:32 by jjin              #+#    #+#              #
-#    Updated: 2022/06/29 20:08:57 by jjin             ###   ########seoul.kr   #
+#    Updated: 2022/06/29 21:29:26 by jjin             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libftprintf.a
-INCLUDES	= include
+INCLUDE		= includes
 LIBFT		= libft
-SRCS_DIR	= src/
-OBJS_DIR	= obj/
+SRC_DIR		= srcs/
+OBJ_DIR		= objs/
 CC			= cc
 CFLAGS		= -Wall -Werror -Wextra -I
 RM			= rm -f
 AR			= ar rcs
-OBJS	= $(SRCS:.c=.o)
 
+SRC_FILES	=	ft_printf ft_print_char ft_print_dec\
+			ft_print_hex ft_print_ptr ft_print_str ft_print_unsigned
+SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-SRC_FILES	=	ft_printf ft_print_char ft_print_dec ft_print_hex ft_print_ptr\
-				 ft_print_str ft_print_unsigned
+OBJF		=	.cache_exists
 
+all:		$(NAME)
 
-SRCS 		= 	$(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJS 		= 	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRC_FILES)))
+$(NAME):	$(OBJ)
+			@make -C $(LIBFT)
+			@cp libft/libft.a .
+			@mv libft.a $(NAME)
+			@$(AR) $(NAME) $(OBJ)
 
-all:			$(NAME)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
+			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(NAME):		$(OBJS) $(OBJS_DIR) $(INCLUDES)
-				@make -C $(LIBFT)
-				@cp libft/libft.a .
-				@mv libft.a $(NAME)
-				@$(AR) $(NAME) $(OBJS)
-
-$(OBJS_DIR)%.o: $(SRCS_DIR)%.c | $(OBJSF)
-				@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+$(OBJF):
+			@mkdir -p $(OBJ_DIR)
 
 clean:
-				@$(RM) -rf $(OBJS_DIR)
-				@make clean -C $(LIBFT)
+			@$(RM) -rf $(OBJ_DIR)
+			@make clean -C $(LIBFT)
 
-fclean:			clean
-				@$(RM) -f $(NAME)
-				@$(RM) -f $(LIBFT)/libft.a
+fclean:		clean
+			@$(RM) -f $(NAME)
+			@$(RM) -f $(LIBFT)/libft.a
+re:			fclean all
 
-re:				fclean all
-
-.PHONY:			all clean fclean re
+.PHONY:		all clean fclean re 

@@ -6,7 +6,7 @@
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 15:41:24 by jjin              #+#    #+#             */
-/*   Updated: 2022/06/29 19:57:55 by jjin             ###   ########seoul.kr  */
+/*   Updated: 2022/06/29 21:57:07 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	ft_printformat(const char f, va_list vl)
 	else if (f == 's')
 		len += ft_print_str(va_arg(vl, char *));
 	else if (f == 'p')
-		len += ft_print_ptr(va_arg(vl, void *));
+		len += ft_print_ptr(va_arg(vl, uintptr_t));
 	else if (f == 'd' || f == 'i')
 		len += ft_print_dec(va_arg(vl, int));
 	else if (f == 'u')
 		len += ft_print_unsigned(va_arg(vl, unsigned int));
 	else if (f == 'x' || f == 'X')
-		len += ft_print_hex(va_arg(vl, unsigned int));
+		len += ft_print_hex(f, va_arg(vl, unsigned int));
 	else if (f == '%')
 		len += ft_print_char('%');
 	return (len);
@@ -40,7 +40,9 @@ int	ft_printf(const char *str, ...)
 	int		i;
 	va_list	vl;
 
+	len = 0;
 	i = 0;
+	va_start(vl, str);
 	while (str[i])
 	{
 		if (str[i] == '%')

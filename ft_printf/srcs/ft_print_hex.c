@@ -1,32 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 15:47:16 by jjin              #+#    #+#             */
-/*   Updated: 2022/06/29 20:00:21 by jjin             ###   ########seoul.kr  */
+/*   Created: 2022/06/29 16:49:51 by jjin              #+#    #+#             */
+/*   Updated: 2022/06/29 21:38:24 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdint.h>
-
-int	ft_print_char(char c)
-int	ft_print_dec(int d)
 int	ft_hex_len(uintptr_t n)
-void	ft_put_hex(const char f, uintptr_t n)
-int	ft_print_hex(const char f, unsigned int n)
-int	ft_print_ptr(uintptr_t n)
-int	ft_print_str(char *str)
-int	ft_dec_len(unsigned int n)
-void	ft_put_dec(unsigned int n)
-int	ft_print_unsigned(unsigned int n)
-int	ft_printformat(const char f, va_list vl)
-int	ft_printf(const char *str, ...)
+{
+	int	len;
 
-#endif
+	len = 0;
+	while (n > 0)
+	{
+		n /= 16;
+		len++;
+	}
+	return (len);
+}
+
+void	ft_put_hex(const char f, uintptr_t n)
+{
+	if (n >= 16)
+	{
+		ft_put_hex(f, n / 16);
+		ft_put_hex(f, n % 16);
+	}
+	else if (n <= 9)
+		ft_print_char('0' + n);
+	else
+	{
+		if (f == 'x')
+			ft_print_char('a' + n - 10);
+		else if (f == 'X')
+			ft_print_char('A' + n - 10);
+	}
+}
+
+int	ft_print_hex(const char f, unsigned int n)
+{
+	if (!n)
+		return (write(1, "0", 1));
+	else
+		ft_put_hex(f, (uintptr_t)n);
+	return (ft_hex_len((uintptr_t)n));
+}

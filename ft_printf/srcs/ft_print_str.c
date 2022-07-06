@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 16:50:18 by jjin              #+#    #+#             */
-/*   Updated: 2022/06/29 19:57:55 by jjin             ###   ########seoul.kr  */
+/*   Created: 2022/06/29 16:54:35 by jjin              #+#    #+#             */
+/*   Updated: 2022/07/06 16:15:57 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_ptr(uintptr_t n)
+int	ft_print_str(char *str)
 {
-	int	len;
+	int	i;
 
-	len += write(1, "0x", 2);
-	if (!ptr)
-		len += write(1, "0", 1);
-	else
+	i = 0;
+	if (!str)
+		return (write(1, "(null)", 6));
+	while (str[i])
 	{
-		ft_put_hex('x', n);
-		len += ft_hex_len(n);
+		write(1, &str[i], 1);
+		i++;
 	}
-	return (len);
+	return (i);
 }

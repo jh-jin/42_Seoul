@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_print_dec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjin <jjin@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 16:54:35 by jjin              #+#    #+#             */
-/*   Updated: 2022/06/29 19:57:55 by jjin             ###   ########seoul.kr  */
+/*   Created: 2022/06/29 16:51:55 by jjin              #+#    #+#             */
+/*   Updated: 2022/07/06 16:28:13 by jjin             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_str(char *str)
+int	ft_print_dec(int d)
 {
-	int	i;
+	int		len;
+	char	*nptr;
 
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
+	len = 0;
+	nptr = ft_itoa(d);
+	len = ft_print_str(nptr);
+	free(nptr);
+	return (len);
 }
